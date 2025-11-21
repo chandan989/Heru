@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heru - A Story of Divine Protection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="icon" type="image/png" href="logo.svg">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+            color: #FFFFFF;
+            overflow-x: hidden;
+        }
+        .touch-device body {
+            cursor: auto;
+        }
+        .heru-violet {
+            color: #9900FF;
+        }
+        .bg-heru-violet {
+            background-color: #9900FF;
+        }
+        .border-heru-violet {
+            border-color: #9900FF;
+        }
+        .shadow-violet {
+            box-shadow: 0 0 25px #9900FF, 0 0 8px #9900FF;
+        }
+        .hero-bg {
+            background: radial-gradient(ellipse at bottom, #9900FF20, #000000 70%);
+        }
+        .section-glow {
+             border: 2px solid #9900FF80;
+             border-radius: 1.5rem;
+             background: rgba(153, 0, 255, 0.05);
+             transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+             box-shadow: 0 0 15px rgba(153, 0, 255, 0.2);
+        }
+        .section-glow:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 35px rgba(153, 0, 255, 0.5);
+            background: rgba(153, 0, 255, 0.1);
+            border-color: #9900FF;
+        }
+        .story-chunk {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-bg.story-chunk {
+            min-height: 100vh;
+        }
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        #custom-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: rgba(153, 0, 255, 0.5);
+            border: 2px solid #9900FF;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+            z-index: 10000;
+        }
+        .touch-device #custom-cursor {
+            display: none;
+        }
+        #custom-cursor.hover {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(153, 0, 255, 0.2);
+        }
+        a, button {
+            cursor: none;
+        }
+        .touch-device a, .touch-device button {
+            cursor: pointer;
+        }
+        #progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            z-index: 9999;
+        }
+        #progress-bar {
+            height: 4px;
+            background-color: #9900FF;
+            width: 0%;
+            box-shadow: 0 0 10px #9900FF;
+        }
+        #back-to-top-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9998;
+            background-color: #9900FF;
+            color: black;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+            box-shadow: 0 0 15px #9900FF;
+        }
+        @media (min-width: 768px) {
+            #back-to-top-btn {
+                bottom: 30px;
+                right: 30px;
+                width: 50px;
+                height: 50px;
+            }
+        }
+        #back-to-top-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px #9900FF;
+        }
+        #back-to-top-btn.show {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div id="progress-container">
+        <div id="progress-bar"></div>
+    </div>
+    <div id="custom-cursor"></div>
+    <div id="particles-js"></div>
+
+    <main>
+        <!-- The Beginning -->
+        <section class="hero-bg text-center story-chunk px-4 sm:px-6">
+            <div class="container mx-auto">
+                <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-6" data-aos="zoom-in" data-aos-delay="100">
+                     <img src="logo.svg" alt="Eye of Horus Logo" class="w-full h-full">
+                </div>
+                <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-4 text-white" data-aos="fade-down" data-aos-delay="300">The Divine Guardian of Medical Cold Chain</h1>
+                <p class="text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto text-gray-300 mb-8" data-aos="fade-up" data-aos-delay="500">
+                    Named after the ancient Egyptian falcon god of protection, Heru ensures every vial of medicine maintains its divine power from source to patient.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4" data-aos="fade-up" data-aos-delay="700">
+                    <a href="https://heru-demo.vercel.app/" target="_blank" class="bg-heru-violet text-black font-bold text-base sm:text-lg py-3 px-6 sm:px-8 rounded-lg hover:shadow-violet transition-all transform hover:scale-105 w-full sm:w-auto">
+                        Live Temple
+                    </a>
+                    <a href="https://github.com/chanadn_989/heru" target="_blank" class="border-2 border-heru-violet text-heru-violet font-bold text-base sm:text-lg py-3 px-6 sm:px-8 rounded-lg hover:bg-heru-violet hover:text-black transition-all transform hover:scale-105 w-full sm:w-auto">
+                        Sacred Scrolls
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Curse -->
+        <section id="problem" class="story-chunk px-4 sm:px-6">
+            <div class="container mx-auto">
+                <div class="text-center mb-12" data-aos="fade-in">
+                    <h3 class="text-base sm:text-lg font-semibold uppercase heru-violet tracking-widest">The Sacred Problem</h3>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-2">The Desert's Curse on Modern Medicine</h2>
+                    <p class="text-base sm:text-lg text-gray-400 mt-4 max-w-3xl mx-auto">Up to 25% of vaccines are degraded by the time they arrive due to improper shipping. Precious medicines face perils that threaten millions of lives.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <div class="section-glow p-6 sm:p-8 text-center" data-aos="fade-right" data-aos-delay="200">
+                        <div class="text-4xl sm:text-5xl mb-4">🌡️</div>
+                        <h4 class="text-xl sm:text-2xl font-bold mb-2">Temperature Exposure</h4>
+                        <p class="text-gray-400">Like papyrus in the sun, vaccines lose their healing power when the sacred cold is broken.</p>
+                    </div>
+                    <div class="section-glow p-6 sm:p-8 text-center" data-aos="fade-left" data-aos-delay="400">
+                        <div class="text-4xl sm:text-5xl mb-4">👥</div>
+                        <h4 class="text-xl sm:text-2xl font-bold mb-2">False Guardians</h4>
+                        <p class="text-gray-400">Counterfeit medicines, as dangerous as tomb robbers, infiltrate the sacred supply chain.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- A Journey Fraught with Peril -->
+        <section class="story-chunk px-4 sm:px-6">
+            <div class="container mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                <div class="md:w-1/2 text-center md:text-left" data-aos="fade-right">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-2">A Journey Fraught with Peril</h2>
+                    <div class="section-glow p-6 sm:p-8 mt-8">
+                        <div class="text-4xl sm:text-5xl mb-4">👁️</div>
+                        <h4 class="text-xl sm:text-2xl font-bold mb-2">Blind Spots</h4>
+                        <p class="text-gray-400">No divine eye to watch over the cargo leaves its journey vulnerable and untracked.</p>
+                    </div>
+                </div>
+                <div class="md:w-1/2 w-full" data-aos="fade-left" data-aos-delay="200">
+                     <div class="section-glow p-6 sm:p-8 text-center">
+                        <div class="text-4xl sm:text-5xl mb-4">⚰️</div>
+                        <h4 class="text-xl sm:text-2xl font-bold mb-2">Lost Treasures</h4>
+                        <p class="text-gray-400">Wasted resources, endangered lives, and broken trust—a plague upon the land.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Prophecy -->
+        <section id="solution" class="story-chunk bg-black px-4 sm:px-6">
+            <div class="container mx-auto">
+                 <div class="text-center mb-16" data-aos="fade-down">
+                    <h3 class="text-base sm:text-lg font-semibold uppercase heru-violet tracking-widest">The Divine Prophecy</h3>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-2">A Glimpse into the Future</h2>
+                    <p class="text-base sm:text-lg text-gray-400 mt-4 max-w-3xl mx-auto">This is the path Heru will walk, a sacred journey in three phases to bring divine protection to all.</p>
+                </div>
+
+                <div class="relative">
+                    <!-- Vertical Line -->
+                    <div class="hidden md:block absolute top-0 bottom-0 left-1/2 w-0.5 bg-heru-violet/30" style="transform: translateX(-50%);"></div>
+
+                    <!-- Timeline Items -->
+                    <div class="space-y-12 md:space-y-0">
+                        <!-- Phase 1 -->
+                        <div class="relative md:grid md:grid-cols-2 md:gap-12 items-center">
+                            <div class="md:col-start-2" data-aos="fade-left">
+                                <div class="section-glow p-6">
+                                    <h4 class="text-xl font-bold mb-2" style="color: #d4af37;">Phase I: The Awakening</h4>
+                                    <p class="text-sm text-gray-400 mb-4">Q4 2025</p>
+                                    <ul class="space-y-2 text-gray-300">
+                                        <li class="flex items-start"><span class="mr-2">🌡️</span><span>Live temple hardware integration</span></li>
+                                        <li class="flex items-start"><span class="mr-2">👑</span><span>Multi-realm dashboards</span></li>
+                                        <li class="flex items-start"><span class="mr-2">👤</span><span>DID integration for participants</span></li>
+                                        <li class="flex items-start"><span class="mr-2">📱</span><span>Mobile temple (PWA) for offline access</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="hidden md:block absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                                <div class="w-6 h-6 rounded-full bg-heru-violet shadow-violet"></div>
+                            </div>
+                        </div>
+
+                        <!-- Phase 2 -->
+                        <div class="relative md:grid md:grid-cols-2 md:gap-12 items-center">
+                            <div class="md:col-start-1 md:text-right" data-aos="fade-right">
+                                <div class="section-glow p-6">
+                                    <h4 class="text-xl font-bold mb-2" style="color: #00d4aa;">Phase II: The Expansion</h4>
+                                    <p class="text-sm text-gray-400 mb-4">Q1 2026</p>
+                                    <ul class="space-y-2 text-gray-300">
+                                        <li class="flex items-start md:justify-end"><span class="md:order-2 md:ml-2">⚡</span><span class="md:order-1">Divine contract-triggered alerts</span></li>
+                                        <li class="flex items-start md:justify-end"><span class="md:order-2 md:ml-2">🏥</span><span class="md:order-1">Sacred pilot with a healing temple</span></li>
+                                        <li class="flex items-start md:justify-end"><span class="md:order-2 md:ml-2">📊</span><span class="md:order-1">Advanced prophecies on efficiency</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="hidden md:block absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                                <div class="w-6 h-6 rounded-full bg-heru-violet shadow-violet"></div>
+                            </div>
+                        </div>
+
+                        <!-- Phase 3 -->
+                        <div class="relative md:grid md:grid-cols-2 md:gap-12 items-center">
+                            <div class="md:col-start-2" data-aos="fade-left">
+                                <div class="section-glow p-6">
+                                    <h4 class="text-xl font-bold mb-2" style="color: #4caf50;">Phase III: The Great Healing</h4>
+                                    <p class="text-sm text-gray-400 mb-4">Q2 2026</p>
+                                    <ul class="space-y-2 text-gray-300">
+                                        <li class="flex items-start"><span class="mr-2">🏛️</span><span>Integration with health information systems</span></li>
+                                        <li class="flex items-start"><span class="mr-2">🤖</span><span>AI-powered route optimization</span></li>
+                                        <li class="flex items-start"><span class="mr-2">📋</span><span>Full compliance with regulations</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="hidden md:block absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                                <div class="w-6 h-6 rounded-full bg-heru-violet shadow-violet"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Ritual -->
+        <section class="story-chunk px-4 sm:px-6">
+            <div class="container mx-auto">
+                <div class="text-center mb-12 sm:mb-16" data-aos="fade-in">
+                    <h3 class="text-base sm:text-lg font-semibold uppercase heru-violet tracking-widest">Our Foundation</h3>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-2">The Four Pillars of Protection</h2>
+                </div>
+                <div class="max-w-4xl mx-auto space-y-8 sm:space-y-12">
+                    <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-8" data-aos="fade-right">
+                        <div class="text-5xl sm:text-6xl">𓅃</div>
+                        <div class="section-glow p-6 flex-1 text-center sm:text-left">
+                            <h4 class="text-xl sm:text-2xl font-bold mb-2">Divine Sealing</h4>
+                            <p class="text-gray-400">Each medicine batch receives Heru's protective seal (NFT) using the Hedera Token Service.</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col sm:flex-row-reverse items-center gap-4 sm:gap-8" data-aos="fade-left">
+                        <div class="text-5xl sm:text-6xl">⚖️</div>
+                        <div class="section-glow p-6 flex-1 text-center sm:text-right">
+                            <h4 class="text-xl sm:text-2xl font-bold mb-2">Sacred Laws</h4>
+                            <p class="text-gray-400">Ancient wisdom encoded as immutable policies via Hedera Guardian.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The All-Seeing Eye -->
+        <section class="story-chunk px-4 sm:px-6">
+            <div class="container mx-auto">
+                <div class="text-center mb-12 sm:mb-16" data-aos="fade-in">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-2">The All-Seeing Eye</h2>
+                </div>
+                <div class="max-w-4xl mx-auto space-y-8 sm:space-y-12">
+                     <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-8" data-aos="fade-right">
+                        <div class="text-5xl sm:text-6xl">👁️</div>
+                        <div class="section-glow p-6 flex-1 text-center sm:text-left">
+                            <h4 class="text-xl sm:text-2xl font-bold mb-2">All-Seeing Eye</h4>
+                            <p class="text-gray-400">Constant vigilance over temperature and location through IoT Temple Sensors.</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col sm:flex-row-reverse items-center gap-4 sm:gap-8" data-aos="fade-left">
+                        <div class="text-5xl sm:text-6xl">📜</div>
+                        <div class="section-glow p-6 flex-1 text-center sm:text-right">
+                            <h4 class="text-xl sm:text-2xl font-bold mb-2">Eternal Record</h4>
+                            <p class="text-gray-400">Priests of healing access the complete, unalterable history with the Mobile Oracle.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Blessings -->
+        <section class="story-chunk px-4 sm:px-6">
+            <div class="container mx-auto">
+                <div class="text-center mb-12" data-aos="fade-in">
+                    <h3 class="text-base sm:text-lg font-semibold uppercase heru-violet tracking-widest">Our Capabilities</h3>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-2">Sacred Powers Bestowed</h2>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <div class="section-glow p-6 sm:p-8 text-center" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="text-4xl sm:text-5xl mb-4">🌡️</div>
+                        <h4 class="text-xl sm:text-2xl font-bold mb-2">Temperature Sanctity</h4>
+                        <p class="text-gray-400">Heru's sentinels monitor the sacred cold via IoT sensors streaming data to Guardian policies.</p>
+                    </div>
+                     <div class="section-glow p-6 sm:p-8 text-center" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="text-4xl sm:text-5xl mb-4">🛡️</div>
+                        <h4 class="text-xl sm:text-2xl font-bold mb-2">Authenticity Seal</h4>
+                        <p class="text-gray-400">Each medicine is tokenized at its source, bearing the mark of truth and protecting it from false copies.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Divine Intervention -->
+        <section class="story-chunk px-4 sm:px-6">
+            <div class="container mx-auto text-center">
+                <div class="mb-12" data-aos="fade-in">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-2">Divine Intervention</h2>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                     <div class="section-glow p-6 sm:p-8 text-center" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="text-4xl sm:text-5xl mb-4">⚡</div>
+                        <h4 class="text-xl sm:text-2xl font-bold mb-2">Divine Warnings</h4>
+                        <p class="text-gray-400">Receive instant messages from the gods. Automatic alerts are sent when sacred conditions are broken.</p>
+                    </div>
+                     <div class="section-glow p-6 sm:p-8 text-center" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="text-4xl sm:text-5xl mb-4">📜</div>
+                        <h4 class="text-xl sm:text-2xl font-bold mb-2">Eternal Wisdom</h4>
+                        <p class="text-gray-400">The complete story, written in stone. An immutable audit trail for pharaohs and healers.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Call -->
+        <section class="story-chunk px-4 sm:px-6">
+            <div class="container mx-auto text-center">
+                <div class="section-glow bg-heru-violet/10 py-12 sm:py-16 px-6 sm:px-8" data-aos="flip-up">
+                     <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Begin Your Sacred Quest</h2>
+                    <p class="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto mb-8">
+                        Join the sacred order. Explore our divine scrolls on GitHub and help us build a world where every medicine is safe and trusted.
+                    </p>
+                    <a href="https://github.com/chandan_989/heru" target="_blank" class="bg-heru-violet text-black font-bold text-base sm:text-lg py-3 px-6 sm:px-8 rounded-lg hover:shadow-violet transition-all transform hover:scale-105 w-full sm:w-auto">
+                        Summon the Code
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <button id="back-to-top-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+        </svg>
+    </button>
+
+    <!-- The Scribe's Mark -->
+    <footer class="border-t border-heru-violet/30 py-8 sm:py-12">
+        <div class="container mx-auto px-6 text-center text-gray-400">
+             <div class="flex items-center justify-center space-x-3 mb-4">
+                <img src="logo.svg" alt="Eye of Horus Logo" class="w-10 h-10">
+                <h1 class="text-xl sm:text-2xl font-bold tracking-wider text-white">Heru</h1>
+            </div>
+            <p class="mb-4 text-sm sm:text-base">Crafted with divine love for a healed world. 𓅃</p>
+            <p class="text-xs sm:text-sm">&copy; 2025 Heru. The eternal guardian watches over healing's sacred journey. May the falcon's eye guide you. 🦅</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@1.37.5/dist/tsparticles.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+          duration: 1000,
+          once: true,
+      });
+
+      // Detect touch device
+      const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
+      if (isTouchDevice) {
+        document.body.classList.add('touch-device');
+      }
+
+      // Custom Cursor
+      if (!isTouchDevice) {
+        const cursor = document.getElementById('custom-cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+      }
+
+
+      // Scroll Progress & Back to Top
+      const backToTopBtn = document.getElementById('back-to-top-btn');
+
+      window.onscroll = function() {
+        scrollProgress();
+        toggleBackToTopBtn();
+      };
+
+      function scrollProgress() {
+        var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var scrolled = (winScroll / height) * 100;
+        document.getElementById("progress-bar").style.width = scrolled + "%";
+      }
+
+      function toggleBackToTopBtn() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            backToTopBtn.classList.add('show');
+        } else {
+            backToTopBtn.classList.remove('show');
+        }
+      }
+
+      backToTopBtn.addEventListener('click', () => {
+          document.body.scrollTop = 0; // For Safari
+          document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+      });
+
+      // Particles.js
+      tsParticles.load("particles-js", {
+        particles: {
+          number: {
+            value: isTouchDevice ? 30 : 80, // Fewer particles on mobile
+            density: {
+              enable: true,
+              value_area: 800
+            }
+          },
+          color: {
+            value: "#9900ff"
+          },
+          shape: {
+            type: "circle",
+          },
+          opacity: {
+            value: 0.5,
+            random: true,
+          },
+          size: {
+            value: 3,
+            random: true,
+          },
+          line_linked: {
+            enable: false,
+          },
+          move: {
+            enable: true,
+            speed: 0.5,
+            direction: "none",
+            random: true,
+            straight: false,
+            out_mode: "out",
+            bounce: false,
+          }
+        },
+        interactivity: {
+          detect_on: "canvas",
+          events: {
+            onhover: {
+              enable: !isTouchDevice, // Disable hover on touch
+              mode: "bubble"
+            },
+            resize: true
+          },
+          modes: {
+            bubble: {
+              distance: 200,
+              size: 5,
+              duration: 2,
+              opacity: 0.8,
+              speed: 3
+            },
+          }
+        },
+        retina_detect: true,
+      });
+    </script>
+
+</body>
+</html>

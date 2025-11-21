@@ -1,0 +1,18 @@
+{
+  "name": "heru-contract-deployment",
+  "version": "1.0.0",
+  "description": "Deployment scripts for Heru smart contracts on Hedera",
+  "main": "deploy-hedera.js",
+  "scripts": {
+    "compile": "solc --optimize --bin --abi contracts/HeruEscrow.sol -o bytecode/",
+    "deploy": "node deploy-hedera.js",
+    "compile-and-deploy": "npm run compile && npm run deploy"
+  },
+  "dependencies": {
+    "@hashgraph/sdk": "^2.40.0",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "solc": "^0.8.19"
+  }
+}

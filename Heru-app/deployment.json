@@ -1,0 +1,9 @@
+{
+  "contractId": "0.0.6904249",
+  "contractAddress": "0x00000000000000000000000000000000006959b9",
+  "deployerAccount": "0.0.6513742",
+  "network": "hedera_testnet",
+  "deployedAt": "2025-09-25T22:25:35.123Z",
+  "contractName": "SimpleContract",
+  "transactionId": "0.0.6513742@1758839127.188054173"
+}

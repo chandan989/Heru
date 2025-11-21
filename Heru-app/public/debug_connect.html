@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HashPack Connection Debug</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; display: grid; place-content: center; min-height: 100vh; text-align: center; background-color: #f7f7f7; color: #333; }
+        h1 { color: #111; }
+        button { font-size: 1.5rem; padding: 1rem 2rem; cursor: pointer; background-color: #007bff; color: white; border: none; border-radius: 8px; }
+        button:hover { background-color: #0056b3; }
+        pre { background-color: #eee; padding: 1rem; border-radius: 5px; text-align: left; max-width: 80vw; margin: 1rem auto; white-space: pre-wrap; word-break: break-all; border: 1px solid #ddd; }
+        .success { color: green; font-weight: bold; }
+        .error { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Pure HashPack Connection Test</h1>
+    <p>This page has no React or Vite. It's a pure test of the HashPack extension API.</p>
+    <button id="connectBtn">Connect HashPack</button>
+    <pre id="output">Click the button to test connection...</pre>
+
+    <script>
+        const connectBtn = document.getElementById('connectBtn');
+        const output = document.getElementById('output');
+
+        connectBtn.addEventListener('click', async () => {
+            output.textContent = 'Attempting to connect...';
+            console.log('Attempting to connect...');
+
+            if (typeof window.hashpack === 'undefined') {
+                const msg = 'Error: window.hashpack is not defined. The extension is not injected on this page.';
+                output.innerHTML = `<span class="error">${msg}</span>`;
+                console.error(msg);
+                return;
+            }
+
+            try {
+                const extension = window.hashpack;
+                
+                // This is the modern, correct API call
+                const topic = await extension.connect("testnet", {
+                    name: "Heru Debug DApp",
+                    description: "A pure test of the Heru DApp connection.",
+                    url: window.location.origin,
+                    icons: []
+                });
+
+                if (topic) {
+                    const accountIds = extension.getAccountIds(topic);
+                    const successMsg = `✅ Success!\n\nTopic: ${topic}\nAccounts: ${JSON.stringify(accountIds, null, 2)}`;
+                    output.innerHTML = `<span class="success">${successMsg}</span>`;
+                    console.log('✅ Success!', { topic, accountIds });
+                } else {
+                    const failMsg = '❌ Connection returned an empty topic. No accounts found.';
+                    output.innerHTML = `<span class="error">${failMsg}</span>`;
+                    console.error(failMsg);
+                }
+            } catch (err) {
+                const errorMsg = `❌ An error occurred: ${err.message}`;
+                output.innerHTML = `<span class="error">${errorMsg}</span>`;
+                console.error('❌ An error occurred:', err);
+            }
+        });
+    </script>
+</body>
+</html>
