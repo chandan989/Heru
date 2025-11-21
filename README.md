@@ -1,5 +1,10 @@
-# Heru 🦅
+<div align="center">
+
+# Heru 
 **The Guardian of Medical Cold Chain Integrity**
+
+  <img src="logo.svg" alt="Heru Logo" width="100"/>
+
 
 *Ensuring every dose maintains its healing power from source to patient*
 
@@ -8,12 +13,17 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![IoT Ready](https://img.shields.io/badge/IoT_Ready-E94E1B?style=for-the-badge&logo=raspberry-pi)](https://www.raspberrypi.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-
+</div>
 ---
 
 ## 🎯 Mission Statement
 
 Heru addresses one of healthcare's most critical challenges: ensuring pharmaceutical integrity throughout the cold chain. By combining IoT monitoring, blockchain technology, and real-time verification, we're building a transparent, tamper-proof system that protects life-saving medicines from production to patient.
+
+## 🎬 Videos
+
+- **Demo VIDEO**: [Watch on YouTube](https://www.youtube.com/watch?v=GUgBG8r3CAs)
+- **Pitch Video**: [Watch on YouTube](https://www.youtube.com/watch?v=HnLR-p3KCQQ)
 
 ## 📊 The Problem We Solve
 
