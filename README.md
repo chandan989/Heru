@@ -101,36 +101,38 @@ graph TB
 
 2. **Set Up Environment Variables**
    ```bash
-   # Backend configuration
-   cp heru-backend/.env.example heru-backend/.env
+   # Web application configuration
+   cd heru-web
+   cp .env.example .env.local
    
-   # Frontend configuration  
-   cp heru-frontend/.env.example heru-frontend/.env.local
+   # IoT Server configuration (if using temperature-sensitive monitoring)
+   cd "IoT Server"
+   cp .env.example .env
    ```
 
 3. **Configure Hedera Credentials**
-   Edit `heru-backend/.env`:
+   Edit your `.env` files with appropriate credentials:
    ```env
    HEDERA_ACCOUNT_ID=0.0.XXXXXX
    HEDERA_PRIVATE_KEY=302e020100...
-   GUARDIAN_API_ENDPOINT=https://your-guardian-instance.com
    DATABASE_URL=postgresql://username:password@localhost:5432/heru
    ```
 
 4. **Start the Application**
    ```bash
-   # Using Docker (recommended)
-   docker-compose up --build
+   # Web Application
+   cd heru-web
+   npm install && npm run dev
    
-   # Or run services individually
-   cd heru-backend && npm install && npm run dev
-   cd heru-frontend && npm install && npm run dev
+   # IoT Server (optional - for temperature monitoring)
+   cd "IoT Server"
+   docker-compose up --build
    ```
 
 5. **Access the Application**
-   - Frontend: http://localhost:3000
-   - Backend API: http://localhost:3002
-   - API Documentation: http://localhost:3002/docs
+   - Frontend: http://localhost:5173
+   - IoT Server API: http://localhost:8000
+   - IoT Server Health: http://localhost:8000/health
 
 ## 📱 User Guide
 
@@ -169,9 +171,11 @@ graph TB
 - **SDK**: Hedera SDK for JavaScript
 
 ### IoT Integration
-- **Devices**: Raspberry Pi, ESP32, or compatible sensors
-- **Protocols**: MQTT, HTTP, WebSocket
-- **Sensors**: Temperature, humidity, GPS, accelerometer
+- **Firmware**: Custom ESP32 firmware in `IoT Firmware/` directory
+- **Devices**: ESP32 development boards with DHT22 sensors
+- **Protocols**: MQTT over WiFi for real-time data transmission
+- **Sensors**: Temperature and humidity monitoring
+- **Server**: Python FastAPI-based ingestion server in `IoT Server/` directory
 
 ## 📊 Performance & Scalability
 
@@ -235,11 +239,12 @@ npm test
 
 ## 📄 Documentation
 
+- [Web Application](heru-web/README.md) - Frontend and backend documentation
+- [IoT Server](IoT%20Server/README.md) - Data ingestion and processing server
+- [IoT Firmware](IoT%20Firmware/README.md) - ESP32 sensor firmware
 - [API Documentation](docs/api.md)
-- [IoT Integration Guide](docs/iot-setup.md)
 - [Deployment Guide](docs/deployment.md)
 - [Security Best Practices](docs/security.md)
-- [Troubleshooting](docs/troubleshooting.md)
 
 ## 📞 Support
 

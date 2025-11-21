@@ -83,34 +83,48 @@ The IoT Server relies on the following external services:
 ## Getting Started
 
 ### Prerequisites
-- Python 3.9+
+- Python 3.11+
 - Docker & Docker Compose
-- An active PostgreSQL instance
-- An active Redis instance
-- API credentials for Pinata, Hedera, and the Notification Hub.
+- API credentials for Pinata and Hedera (optional for testing)
+
+> [!NOTE]
+> The IoT Server is **optional** and only required if you're monitoring temperature-sensitive medicines. Heru can run without IoT sensors for general pharmaceutical tracking.
 
 ### Installation
-1.  **Clone the repository**:
+
+1.  **Navigate to the IoT Server directory**:
     ```bash
-    git clone https://github.com/your-username/heru.git
-    cd heru/iot-server
+    cd "IoT Server"
     ```
+
 2.  **Set up environment variables**:
-    Create a `.env` file and populate it with the necessary credentials for the database and external services.
+    Copy the example file and populate it with your credentials:
+    ```bash
+    cp .env.example .env
+    ```
+    
+    Edit `.env` with your settings:
     ```env
-    DATABASE_URL="postgresql://user:password@host:port/database"
-    REDIS_URL="redis://host:port"
+    DATABASE_URL="postgresql+asyncpg://user:password@db/heru_iot"
+    REDIS_URL="redis://redis:6379"
+    MQTT_BROKER="mqtt"
     PINATA_API_KEY="your_key"
     PINATA_API_SECRET="your_secret"
     HEDERA_ACCOUNT_ID="0.0.XXXX"
     HEDERA_PRIVATE_KEY="your_key"
-    # ... other variables
+    HEDERA_TOPIC_ID="0.0.YYYY"
     ```
-3.  **Install dependencies**:
+
+3.  **Start the server stack** (includes MQTT, Redis, PostgreSQL, Web API, and Worker):
     ```bash
-    pip install -r requirements.txt
+    docker-compose up --build
     ```
-4.  **Run the server**:
+
+4.  **Verify the server is running**:
     ```bash
-    python main.py
+    curl http://localhost:8000/health
     ```
+
+### Setting Up IoT Sensors
+
+For instructions on flashing and configuring ESP32 sensors, see the [IoT Firmware README](../IoT%20Firmware/README.md).
